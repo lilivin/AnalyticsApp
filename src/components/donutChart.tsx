@@ -106,7 +106,8 @@ function DonutChart(props: { id: string; zoom: boolean }) {
       .duration(1000)
       .delay((d, i) => i * 500) // Delay for entry animation
       .attr("opacity", 1)
-      .attrTween("d", arcTweenEnter as any);
+      // @ts-ignore
+      .attrTween("d", arcTweenEnter);
 
     if (zoom) {
       svg

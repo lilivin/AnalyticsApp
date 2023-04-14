@@ -18,17 +18,18 @@ function BarChart(props: {
   grouped?: boolean;
 }) {
   const { id, data, xValue, keys, grouped } = props;
-  const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+  const margin = { top: 20, right: 30, bottom: 60, left: 40 };
   const width = 600 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
-  const colors = ["#FF5733", "#F3FF00", "#42FF00", "#00FFF3", "#004DFF"];
+  const colors = ["#3B50DF", "#80CAEF", "#0FADD0", "#6577F3"];
 
   useEffect(() => {
     d3.select(`#${id}`).select("svg").remove();
     const svg = d3
       .select(`#${id}`)
       .append("svg")
+      .style("overflow", "visible")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -64,15 +65,29 @@ function BarChart(props: {
       .domain(
         grouped
           ? [0, getMaxValue(data, keys)]
-          : [
+          : ([
               0,
               d3.max(data, (d: BarChartData) => {
                 let result = 0;
                 keys.map((key: string) => (result += d[key] as number));
                 return result;
               }),
-            ] as number[]
+            ] as number[])
       );
+
+    const yAxisTicks = yScale.ticks();
+    svg
+      .selectAll(".y-axis-line")
+      .data(yAxisTicks)
+      .enter()
+      .append("line")
+      .attr("class", "y-axis-line")
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", (d) => yScale(d))
+      .attr("y2", (d) => yScale(d))
+      .attr("stroke", "#F3F3F3")
+      .attr("stroke-width", 1);
 
     svg
       .append("g")
@@ -90,50 +105,98 @@ function BarChart(props: {
         grouped ? `translate(${xScale(d.group as string)}, 0)` : 0
       )
       .selectAll("rect")
+      // @ts-ignore
       .data((d: BarChartData) =>
-        grouped
-          ? keys.map((key: string) => ({
-              name: key,
-              value: d[key],
-            }))
-          : d as any
+        grouped ? keys.map((key: string) => ({ name: key, value: d[key] })) : d
       )
       .join("rect")
-      .attr("x", (d: any) =>
+      .attr("x", (d) =>
+        // @ts-ignore
         grouped ? (x1Scale(d.name as string) as number) : xScale(d.data[xValue])!
       )
-      .attr("y", height) // set initial y to bottom of SVG
+      .attr("y", height)
       .attr("width", grouped ? x1Scale.bandwidth() : xScale.bandwidth())
-      .attr("height", 0) // set initial height to 0
+      .attr("height", 0)
       .attr("fill", (_, index: number) => (grouped ? colors[index] : null))
-      .transition() // add transition
-      .duration(1000) // set duration of transition
+      .attr("rx", 4)
+      .attr("ry", 4)
+      .transition()
+      .duration(1000)
       .attr(
         "y",
         (
-          d: any // set final y based on data value
+          d // @ts-ignore
         ) => (grouped ? yScale(d.value) : yScale(d[1]))
       )
       .attr(
         "height",
         (
-          d: any // set final height based on data value
+          d // @ts-ignore
         ) => (grouped ? height - yScale(d.value) : yScale(d[0]) - yScale(d[1]))
       );
 
-    svg
+    const xAxis = svg
       .append("g")
       .attr("transform", `translate(0, ${height})`)
-      .transition() // add transition to x-axis
-      .duration(1000) // set duration of transition
       .call(d3.axisBottom(xScale));
-
-    svg
+    
+    const yAxis = svg
       .append("g")
       .attr("class", "y-axis")
-      .transition() // add transition to y-axis
-      .duration(1000) // set duration of transition
-      .call(d3.axisLeft(yScale));
+      .call(d3.axisLeft(yScale))
+      
+    xAxis.select(".domain").remove();
+    xAxis.selectAll(".tick line").remove()
+
+    yAxis.select(".domain").remove();
+    yAxis.selectAll(".tick line").remove()
+
+    xAxis.selectAll(".tick text")
+      .attr("fill", "#637382")
+      .attr("font-weight", 700)
+
+    yAxis.selectAll(".tick text")
+      .attr("fill", "#637382")
+
+      const legendWidth = 100; // width of the legend
+const legendPadding = 10; // padding between legend items
+
+// Append the legend container to the SVG
+const legend = svg
+  .append("g")
+  .attr("class", "legend")
+  .attr("transform", `translate(10, ${height + 40})`); // adjust the value to control the vertical spacing between the chart and the legend
+
+// Append legend items
+const legendItems = legend
+  .selectAll(".legend-item")
+  .data(keys)
+  .enter()
+  .append("g")
+  .attr("class", "legend-item")
+  .attr("transform", (d, i) => `translate(${i * (legendWidth + legendPadding)}, 0)`); // adjust the value to control the horizontal spacing between legend items
+
+// Append legend color rectangles
+legendItems
+  .append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 15) // width of the legend color rectangle
+  .attr("height", 15) // height of the legend color rectangle
+  .attr("rx", 50)
+  .attr("fill", (d, i) => colors[i]) // assuming colors is an array of colors for each legend item
+  .attr("stroke", "#000")
+  .attr("stroke-width", "#000");
+
+// Append legend labels
+legendItems
+  .append("text")
+  .attr("x", 20) // adjust the value to control the horizontal spacing between the legend color rectangle and the legend label
+  .attr("y", 12) // adjust the value to vertically center the legend label
+  .text((d) => d) // assuming the legend labels are the keys in the data
+  .attr("font-weight", 500)
+  .attr("font-size", 14);
+    
   }, []);
 
   return <div id={id}></div>;
