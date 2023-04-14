@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "../donutChart.tsx", "../groupedBarChart.tsx"  ]
 }
