@@ -20,7 +20,7 @@ function LineChart(props: {
     var div = d3
       .select("body")
       .append("div")
-      .attr("class", "tooltip")
+      .attr("class", "tooltipLineChart")
       .style("opacity", 0);
 
     const svg = d3
@@ -45,12 +45,42 @@ function LineChart(props: {
       ] as Iterable<d3.NumberValue>)
       .range([height, 0]);
 
+    const yAxisTicks = yScale.ticks();
     svg
+      .selectAll(".y-axis-line")
+      .data(yAxisTicks)
+      .enter()
+      .append("line")
+      .attr("class", "y-axis-line")
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", (d) => yScale(d))
+      .attr("y2", (d) => yScale(d))
+      .attr("stroke", "#F3F3F3")
+      .attr("stroke-width", 1);
+
+    const xAxis = svg
       .append("g")
-      .attr("transform", `translate(0,${height})`)
+      .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(xScale));
 
-    svg.append("g").call(d3.axisLeft(yScale));
+    const yAxis = svg
+      .append("g")
+      .attr("class", "y-axis")
+      .call(d3.axisLeft(yScale));
+
+    xAxis.select(".domain").remove();
+    xAxis.selectAll(".tick line").remove();
+
+    yAxis.select(".domain").remove();
+    yAxis.selectAll(".tick line").remove();
+
+    xAxis
+      .selectAll(".tick text")
+      .attr("fill", "#637382")
+      .attr("font-weight", 700);
+
+    yAxis.selectAll(".tick text").attr("fill", "#637382");
 
     const line1 = svg
       .append("path")
@@ -121,7 +151,7 @@ function LineChart(props: {
       .attr("opacity", 0)
       .attr("cx", (d) => xScale(d[xValue] as string)! + xScale.bandwidth() / 2)
       .attr("cy", (d) => yScale(d.line1))
-      .attr("r", 6)
+      .attr("r", 5)
       .attr("fill", "steelblue")
       .transition()
       .duration(1000)
@@ -137,7 +167,7 @@ function LineChart(props: {
       .attr("opacity", 0)
       .attr("cx", (d) => xScale(d[xValue] as string)! + xScale.bandwidth() / 2)
       .attr("cy", (d) => yScale(d.line2))
-      .attr("r", 6)
+      .attr("r", 5)
       .attr("fill", "orange")
       .transition()
       .duration(1000)
@@ -161,11 +191,11 @@ function LineChart(props: {
         div.html(
           "<h3>" +
             d[xValue] +
-            "</h3><br/><p>Value1: " +
+            "</h3><p>Value1: <span>" +
             d.line1 +
-            "</p><br/><p>Value2: " +
+            "</span></p><p>Value2: <span>" +
             d.line2 +
-            "</p>"
+            "</span></p>"
         );
       })
       .on("mousemove", (event, d) => {

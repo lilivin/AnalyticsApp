@@ -1,9 +1,35 @@
 .tooltip {
-    position: absolute;
-    text-align: center;
-    padding: 5px;
-    font: 12px sans-serif;
-    background: #fff;
-    border: 1px solid #aaa;
-    pointer-events: none;
-  }
+  position: absolute;
+  text-align: center;
+  padding: 10px 40px;
+  font: 18px sans-serif;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #fff;
+  pointer-events: none;
+}
+
+.tooltipLineChart {
+  position: absolute;
+  text-align: center;
+  padding: 10px 10px;
+  font: 18px sans-serif;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+  pointer-events: none;
+}
+
+.tooltipLineChart h3, .tooltipLineChart p{
+  margin: 0;
+  font-size: 14px;
+}
+
+.tooltipLineChart h3{
+  padding: 0 0 10px 0;
+}
+
+.tooltipLineChart span{
+  font-style: italic;
+}
