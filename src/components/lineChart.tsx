@@ -1,19 +1,21 @@
 import * as d3 from "d3";
 import { useEffect } from "react";
 import "./styles.css";
-import { DataPoint } from "../App";
+import { DataPoint } from "../pages/Homepage";
 
 function LineChart(props: {
   id: string;
   data: DataPoint[];
   xValue: string;
   smooth: boolean;
+  width: number;
+  height: number;
 }) {
-  const { id, data, xValue, smooth } = props;
+  const { id, data, xValue, smooth, width, height } = props;
 
-  const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-  const width = 600 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
+  const margin = { top: 20, right: 30, bottom: 10, left: 25 };
+  const initialWidth = width - margin.left - margin.right;
+  const initialHeight = height - margin.top - margin.bottom;
 
   useEffect(() => {
     d3.select(`#${id}`).select("svg").remove();
@@ -27,14 +29,14 @@ function LineChart(props: {
       .select(`#${id}`)
       .append("svg")
       .style("overflow", "visible")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", initialWidth + margin.left + margin.right)
+      .attr("height", initialHeight + margin.top + margin.bottom)
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
     const xScale = d3
       .scaleBand()
       .domain(data.map((d) => d[xValue] as string))
-      .range([0, width])
+      .range([0, initialWidth])
       .padding(0.1);
 
     const yScale = d3
@@ -43,7 +45,7 @@ function LineChart(props: {
         0,
         d3.max(data, (d) => Math.max(d.line1, d.line2) * 1.05),
       ] as Iterable<d3.NumberValue>)
-      .range([height, 0]);
+      .range([initialHeight, 0]);
 
     const yAxisTicks = yScale.ticks();
     svg
@@ -53,7 +55,7 @@ function LineChart(props: {
       .append("line")
       .attr("class", "y-axis-line")
       .attr("x1", 0)
-      .attr("x2", width)
+      .attr("x2", initialWidth)
       .attr("y1", (d) => yScale(d))
       .attr("y2", (d) => yScale(d))
       .attr("stroke", "#F3F3F3")
@@ -61,7 +63,7 @@ function LineChart(props: {
 
     const xAxis = svg
       .append("g")
-      .attr("transform", `translate(0, ${height})`)
+      .attr("transform", `translate(0, ${initialHeight})`)
       .call(d3.axisBottom(xScale));
 
     const yAxis = svg
@@ -183,7 +185,7 @@ function LineChart(props: {
       .attr("x", (d) => xScale(d[xValue] as string)!)
       .attr("y", 0)
       .attr("width", xScale.bandwidth() + 5)
-      .attr("height", height)
+      .attr("height", initialHeight)
       .attr("opacity", 0)
       .on("mouseover", (event, d) => {
         d3.select(event.target).attr("opacity", 0.01);

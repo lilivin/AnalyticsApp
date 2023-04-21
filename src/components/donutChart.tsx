@@ -7,8 +7,8 @@ type DonutChartData = {
   value: number;
 };
 
-function DonutChart(props: { id: string; zoom: boolean }) {
-  const { id, zoom } = props;
+function DonutChart(props: { id: string; zoom: boolean, width: number, height: number }) {
+  const { id, zoom, width, height } = props;
 
   const data: DonutChartData[] = [
     { label: "Category 1", value: 40 },
@@ -23,10 +23,10 @@ function DonutChart(props: { id: string; zoom: boolean }) {
     .map((item) => item.value)
     .reduce((prev, next) => prev + next);
 
-  const margin = { top: 20, right: 30, bottom: 60, left: 40 };
-  const width = 700 - margin.left - margin.right;
-  const height = 600 - margin.top - margin.bottom;
-  const radius = Math.min(width, height) / 2;
+  const margin = { top: 0, right: 30, bottom: 60, left: 40 };
+  const initialWidth = width - margin.left - margin.right;
+  const initialHeight = height - margin.top - margin.bottom;
+  const radius = Math.min(initialWidth, initialHeight) / 2;
   const color = d3
     .scaleOrdinal()
     .domain(data.map((d: DonutChartData) => d.label))
@@ -38,10 +38,10 @@ function DonutChart(props: { id: string; zoom: boolean }) {
     const svg = d3
       .select(`#${id}`)
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", initialWidth + margin.left + margin.right)
+      .attr("height", initialHeight + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", `translate(${width / 2},${height / 2})`);
+      .attr("transform", `translate(${(initialWidth + margin.left + margin.right) / 2},${(initialHeight + margin.top + margin.bottom) / 2})`);
 
     const arc = d3
       .arc()
@@ -154,7 +154,7 @@ function DonutChart(props: { id: string; zoom: boolean }) {
       .attr(
         "transform",
         `translate(${-(keys.length * (legendWidth + legendPadding / 2)) / 2}, ${
-          height / 2
+          initialHeight / 2
         })`
       );
 

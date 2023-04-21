@@ -1,0 +1,19 @@
+.graphContainer{
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    svg{
+        margin: 0 auto;
+    }
+}
+
+.header{
+    font-size: 24px;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 50px);
+}
