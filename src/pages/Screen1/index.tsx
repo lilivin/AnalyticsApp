@@ -1,7 +1,9 @@
+import BarChart from "../../components/barChart";
 import DonutChart from "../../components/donutChart";
 import GraphContainer from "../../components/graphContainer";
 import LineChart from "../../components/lineChart";
-import { DataPoint } from "../Homepage";
+import OverviewStats from "../../components/overviewStats";
+import { DataPoint, barChartData2, dataGrouped } from "../Homepage";
 import styles from "./index.module.scss";
 
 const lineChartData1: DataPoint[] = [
@@ -19,25 +21,66 @@ const lineChartData1: DataPoint[] = [
   { month: "Dec", line1: 30, line2: 15 },
 ];
 
-
 function Screen1() {
   return (
     <div className={styles.container}>
+      <OverviewStats />
       <GraphContainer title="User Devices" width={60}>
-      <LineChart
-        id="lineChart"
-        data={lineChartData1}
-        xValue="month"
-        smooth={false}
-        width={850}
-        height={400}
-      />
+        <LineChart
+          id="lineChart"
+          data={lineChartData1}
+          xValue="month"
+          smooth={false}
+          width={850}
+          height={400}
+        />
       </GraphContainer>
       <GraphContainer title="User Devices" width={40}>
-        <DonutChart id="testCompoentn22" zoom={false} width={450} height={450}/>
+        <DonutChart
+          id="testCompoentn2312"
+          zoom={false}
+          width={450}
+          height={450}
+          withTooltip={true}
+          withLegend={true}
+        />
       </GraphContainer>
-      <GraphContainer title="User Devices" width={50}>
-        <DonutChart id="testCompoentn23" zoom={false} width={600} height={700}/>
+      <GraphContainer title="User Devices" width={30}>
+        <DonutChart
+          id="testCompoentn2123123"
+          zoom={false}
+          width={400}
+          height={400}
+          withTooltip={true}
+          withLegend={true}
+        />
+      </GraphContainer>
+      <GraphContainer title="User Devices" width={70}>
+        <BarChart
+          id="groupedBarChart"
+          data={barChartData2}
+          xValue="year"
+          keys={["apples"]}
+        />
+      </GraphContainer>
+      <GraphContainer title="User Devices" width={70}>
+        <BarChart
+          id="groupedBarChart2"
+          data={dataGrouped}
+          xValue="group"
+          keys={["value1", "value2", "value3", "value4"]}
+          grouped={true}
+        />
+      </GraphContainer>
+      <GraphContainer title="User Devices" width={30}>
+        <LineChart
+          id="lineChart2"
+          data={lineChartData1}
+          xValue="month"
+          smooth={true}
+          width={850}
+          height={400}
+        />
       </GraphContainer>
     </div>
   );

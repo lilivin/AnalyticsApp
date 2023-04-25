@@ -1,0 +1,43 @@
+.container{
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 33%;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.amount, .title{
+    display: block;
+}
+
+.amount{
+    font-size: 24px;
+    font-weight: 800;
+}
+.graph{
+    width: 100px;
+}
+
+.comparison{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .period{
+        font-size: 14px;
+    }
+    .percent{
+        color: #fff;
+        font-weight: 500;
+        padding: 2px 5px;
+        border-radius: 5px;
+        &.surplus{
+            background-color: green;
+        }
+        &.shortage{
+            background-color: red;
+        }
+    }
+}

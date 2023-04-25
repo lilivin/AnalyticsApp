@@ -10,6 +10,16 @@ export interface DataPoint {
   line2: number;
 }
 
+export const barChartData2 = [
+  { year: 2014, apples: 12 },
+  { year: 2015, apples: 15 },
+  { year: 2016, apples: 3 },
+  { year: 2017, apples: 11 },
+  { year: 2018, apples: 10 },
+  { year: 2019, apples: 12 },
+  { year: 2020, apples: 15 },
+];
+
 const barChartData1 = [
   { year: 2014, apples: 12, oranges: 18, grapes: 10 },
   { year: 2015, apples: 15, oranges: 20, grapes: 12 },
@@ -20,12 +30,14 @@ const barChartData1 = [
   { year: 2020, apples: 15, oranges: 20, grapes: 12 },
 ];
 
+export const dataGrouped = [
+  { group: "Group 1", value1: 10, value2: 20, value3: 20, value4: 20 },
+  { group: "Group 2", value1: 15, value2: 15, value3: 25, value4: 35 },
+  { group: "Group 3", value1: 20, value2: 10, value3: 20, value4: 30 },
+];
+
 function Homepage() {
-  const dataGrouped = [
-    { group: "Group 1", value1: 10, value2: 20, value3: 20, value4: 20 },
-    { group: "Group 2", value1: 15, value2: 15, value3: 25, value4: 35 },
-    { group: "Group 3", value1: 20, value2: 10, value3: 20, value4: 30 },
-  ];
+  
 
   const lineChartData1: DataPoint[] = [
     { month: "Jan", line1: 10, line2: 20 },
@@ -57,20 +69,10 @@ function Homepage() {
     { day: "12", line1: 30, line2: 15 },
   ];
 
-  const barChartData2 = [
-    { year: 2014, apples: 12 },
-    { year: 2015, apples: 15 },
-    { year: 2016, apples: 3 },
-    { year: 2017, apples: 11 },
-    { year: 2018, apples: 10 },
-    { year: 2019, apples: 12 },
-    { year: 2020, apples: 15 },
-  ];
-
   return (
     <div>
-      <DonutChart id="testCompoentn" zoom={true} width={600} height={700}/>
-      <DonutChart id="testCompoentn2" zoom={false} width={600} height={700}/>
+      <DonutChart id="testCompoentn" zoom={true} width={600} height={700} withTooltip={false} withLegend={false}/>
+      <DonutChart id="testCompoentn2" zoom={false} width={600} height={700} withTooltip={false} withLegend={false}/>
       <BarChart
         id="barChart"
         data={barChartData1}

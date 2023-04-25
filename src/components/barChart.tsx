@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import { useEffect } from "react";
+import useWindowDimensions from "../helpers/useWindowDimenstions";
 
 type BarChartData = {
   [key: string]: number | string;
@@ -18,9 +19,10 @@ function BarChart(props: {
   grouped?: boolean;
 }) {
   const { id, data, xValue, keys, grouped } = props;
-  const margin = { top: 20, right: 30, bottom: 60, left: 40 };
-  const width = 600 - margin.left - margin.right;
+  const margin = { top: 50, right: 20, bottom: 60, left: 20 };
   const height = 400 - margin.top - margin.bottom;
+
+  const { width: parentWidth } = useWindowDimensions(id);
 
   const colors = ["#3B50DF", "#80CAEF", "#0FADD0", "#6577F3"];
 
@@ -30,14 +32,14 @@ function BarChart(props: {
       .select(`#${id}`)
       .append("svg")
       .style("overflow", "visible")
-      .attr("width", width + margin.left + margin.right)
+      .attr("width", parentWidth! + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const xScale = d3
       .scaleBand()
-      .range([0, width])
+      .range([0, parentWidth! - margin.right])
       .domain(data.map((d) => d[xValue]) as Iterable<string>)
       .padding(0.1);
 
@@ -83,7 +85,7 @@ function BarChart(props: {
       .append("line")
       .attr("class", "y-axis-line")
       .attr("x1", 0)
-      .attr("x2", width)
+      .attr("x2", parentWidth!)
       .attr("y1", (d) => yScale(d))
       .attr("y2", (d) => yScale(d))
       .attr("stroke", "#F3F3F3")
@@ -139,65 +141,84 @@ function BarChart(props: {
       .append("g")
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(xScale));
-    
+
     const yAxis = svg
       .append("g")
       .attr("class", "y-axis")
-      .call(d3.axisLeft(yScale))
-      
+      .call(d3.axisLeft(yScale));
+
     xAxis.select(".domain").remove();
-    xAxis.selectAll(".tick line").remove()
+    xAxis.selectAll(".tick line").remove();
 
     yAxis.select(".domain").remove();
-    yAxis.selectAll(".tick line").remove()
+    yAxis.selectAll(".tick line").remove();
 
-    xAxis.selectAll(".tick text")
+    xAxis
+      .selectAll(".tick text")
       .attr("fill", "#637382")
-      .attr("font-weight", 700)
+      .attr("font-weight", 700);
 
-    yAxis.selectAll(".tick text")
-      .attr("fill", "#637382")
+    yAxis.selectAll(".tick text").attr("fill", "#637382");
 
-      const legendWidth = 100; // width of the legend
-const legendPadding = 10; // padding between legend items
+    const legendWidth = 100; // width of the legend
+    const itemsInRow =
+      Math.floor(parentWidth / legendWidth) > keys.length
+        ? keys.length
+        : Math.floor(parentWidth / legendWidth);
+    const legendContainerWidth = itemsInRow * legendWidth;
 
-// Append the legend container to the SVG
-const legend = svg
-  .append("g")
-  .attr("class", "legend")
-  .attr("transform", `translate(10, ${height + 40})`); // adjust the value to control the vertical spacing between the chart and the legend
+    // Append the legend container to the SVG
+    const legend = svg
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", `translate(0, ${height + 40})`); // adjust the value to control the vertical spacing between the chart and the legend
 
-// Append legend items
-const legendItems = legend
-  .selectAll(".legend-item")
-  .data(keys)
-  .enter()
-  .append("g")
-  .attr("class", "legend-item")
-  .attr("transform", (d, i) => `translate(${i * (legendWidth + legendPadding)}, 0)`); // adjust the value to control the horizontal spacing between legend items
+    // Append legend items
+    const legendItems = legend
+      .selectAll(".legend-item")
+      .data(keys)
+      .enter()
+      .append("g")
+      .attr("class", "legend-item")
+      .attr(
+        "transform",
+        (d, i) =>
+          `translate(${updateLegendItem(i).xTranslate}, ${
+            updateLegendItem(i).yTranslate
+          })`
+      );
 
-// Append legend color rectangles
-legendItems
-  .append("rect")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", 15) // width of the legend color rectangle
-  .attr("height", 15) // height of the legend color rectangle
-  .attr("rx", 50)
-  .attr("fill", (d, i) => colors[i]) // assuming colors is an array of colors for each legend item
-  .attr("stroke", "#000")
-  .attr("stroke-width", "#000");
+    function updateLegendItem(i: number) {
+      const yTranslate = 0;
+      const xTranslate = i * legendWidth;
+      if (i < itemsInRow) {
+        return { xTranslate: xTranslate, yTranslate: yTranslate };
+      } else {
+        return { xTranslate: (i - itemsInRow) * legendWidth, yTranslate: 20 };
+      }
+    }
 
-// Append legend labels
-legendItems
-  .append("text")
-  .attr("x", 20) // adjust the value to control the horizontal spacing between the legend color rectangle and the legend label
-  .attr("y", 12) // adjust the value to vertically center the legend label
-  .text((d) => d) // assuming the legend labels are the keys in the data
-  .attr("font-weight", 500)
-  .attr("font-size", 14);
-    
-  }, []);
+    // Append legend color rectangles
+    legendItems
+      .append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("width", 15) // width of the legend color rectangle
+      .attr("height", 15) // height of the legend color rectangle
+      .attr("rx", 50)
+      .attr("fill", (d, i) => colors[i]) // assuming colors is an array of colors for each legend item
+      .attr("stroke", "#000")
+      .attr("stroke-width", "#000");
+
+    // Append legend labels
+    legendItems
+      .append("text")
+      .attr("x", 20) // adjust the value to control the horizontal spacing between the legend color rectangle and the legend label
+      .attr("y", 12) // adjust the value to vertically center the legend label
+      .text((d) => d) // assuming the legend labels are the keys in the data
+      .attr("font-weight", 500)
+      .attr("font-size", 14);
+  }, [parentWidth]);
 
   return <div id={id}></div>;
 }
