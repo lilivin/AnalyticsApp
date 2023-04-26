@@ -1,0 +1,12 @@
+.container {
+  overflow: auto;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  min-width: 800px;
+}

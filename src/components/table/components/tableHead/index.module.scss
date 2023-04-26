@@ -1,0 +1,11 @@
+.thead{
+    text-align: left;
+    position: sticky;
+    display: table-row-group;
+    tr{
+        display: table-row;
+        vertical-align: middle;
+        padding: 10px 0;
+        top: 0px;
+    }
+}

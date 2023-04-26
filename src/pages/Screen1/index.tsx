@@ -3,6 +3,12 @@ import DonutChart from "../../components/donutChart";
 import GraphContainer from "../../components/graphContainer";
 import LineChart from "../../components/lineChart";
 import OverviewStats from "../../components/overviewStats";
+import Table from "../../components/table";
+import TableBody from "../../components/table/components/tableBody";
+import TableBodyCell from "../../components/table/components/tableBodyCell";
+import TableHead from "../../components/table/components/tableHead";
+import TableHeadCell from "../../components/table/components/tableHeadCell";
+import TableRow from "../../components/table/components/tableRow";
 import { DataPoint, barChartData2, dataGrouped } from "../Homepage";
 import styles from "./index.module.scss";
 
@@ -25,6 +31,61 @@ function Screen1() {
   return (
     <div className={styles.container}>
       <OverviewStats />
+      <GraphContainer title="User Devices" width={100}>
+      <Table>
+        <TableHead>
+          <TableHeadCell>Name</TableHeadCell>
+          <TableHeadCell>Email</TableHeadCell>
+          <TableHeadCell>Project</TableHeadCell>
+          <TableHeadCell>Duration</TableHeadCell>
+          <TableHeadCell>Status</TableHeadCell>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableBodyCell>Test1</TableBodyCell>
+            <TableBodyCell>Test2</TableBodyCell>
+            <TableBodyCell>Test3</TableBodyCell>
+            <TableBodyCell>Test4</TableBodyCell>
+            <TableBodyCell>Test5</TableBodyCell>
+          </TableRow>
+          <TableRow>
+            <TableBodyCell>Test1</TableBodyCell>
+            <TableBodyCell>Test2</TableBodyCell>
+            <TableBodyCell>Test3</TableBodyCell>
+            <TableBodyCell>Test4</TableBodyCell>
+            <TableBodyCell>Test5</TableBodyCell>
+          </TableRow>
+          <TableRow>
+            <TableBodyCell>Test1</TableBodyCell>
+            <TableBodyCell>Test2</TableBodyCell>
+            <TableBodyCell>Test3</TableBodyCell>
+            <TableBodyCell>Test4</TableBodyCell>
+            <TableBodyCell>Test5</TableBodyCell>
+          </TableRow>
+          <TableRow>
+            <TableBodyCell>Test1</TableBodyCell>
+            <TableBodyCell>Test2</TableBodyCell>
+            <TableBodyCell>Test3</TableBodyCell>
+            <TableBodyCell>Test4</TableBodyCell>
+            <TableBodyCell>Test5</TableBodyCell>
+          </TableRow>
+          <TableRow>
+            <TableBodyCell>Test1</TableBodyCell>
+            <TableBodyCell>Test2</TableBodyCell>
+            <TableBodyCell>Test3</TableBodyCell>
+            <TableBodyCell>Test4</TableBodyCell>
+            <TableBodyCell>Test5</TableBodyCell>
+          </TableRow>
+          <TableRow>
+            <TableBodyCell>Test1</TableBodyCell>
+            <TableBodyCell>Test2</TableBodyCell>
+            <TableBodyCell>Test3</TableBodyCell>
+            <TableBodyCell>Test4</TableBodyCell>
+            <TableBodyCell>Test5</TableBodyCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      </GraphContainer>
       <GraphContainer title="User Devices" width={60}>
         <LineChart
           id="lineChart"
