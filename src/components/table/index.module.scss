@@ -1,12 +1,35 @@
 .container {
   overflow: auto;
-  height: 200px;
+  height: 300px;
   border-radius: 10px;
+  margin-top: 20px;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f7f7f7;
+    padding-top: 44px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 .table {
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
-  min-width: 800px;
+  // table-layout: fixed;
+}
+
+@media (min-width: 1200px) {
+  .table {
+    table-layout: fixed;
+  }
 }

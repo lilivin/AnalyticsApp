@@ -7,14 +7,9 @@ function GraphContainer(props: {
 }) {
   const { children, title, width } = props;
   return (
-    <div
-      className={styles.graphContainer}
-      style={{ width: `calc(${width}% - 30px)` }}
-    >
+    <div className={styles.graphContainer} style={{ width: `${width}%` }}>
       <h3 className={styles.header}>{title}</h3>
-      <div className={styles.content}>
-      {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 }

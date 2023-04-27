@@ -1,0 +1,18 @@
+.tag{
+    display: inline;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    &.red{
+        background: #FFF2F2;
+        color: red;
+    }
+    &.green{
+        background: #EBFAF5;
+        color: green;
+    }
+    &.blue{
+        background: #EFF1FD;
+        color: blue;
+    }
+}

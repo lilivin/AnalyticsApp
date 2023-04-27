@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+@media(max-width: 1000px){
+    .container{
+        flex-wrap: wrap;
+    }
+}
