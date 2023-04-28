@@ -20,7 +20,7 @@ export const barChartData2 = [
   { year: 2020, apples: 15 },
 ];
 
-const barChartData1 = [
+export const barChartData1 = [
   { year: 2014, apples: 12, oranges: 18, grapes: 10 },
   { year: 2015, apples: 15, oranges: 20, grapes: 12 },
   { year: 2016, apples: 3, oranges: 5, grapes: 8 },
@@ -35,6 +35,22 @@ export const dataGrouped = [
   { group: "Group 2", value1: 15, value2: 15, value3: 25, value4: 35 },
   { group: "Group 3", value1: 20, value2: 10, value3: 20, value4: 30 },
 ];
+
+export const lineChartData2: DataPoint[] = [
+  { day: "1", line1: 10, line2: 20 },
+  { day: "2", line1: 20, line2: 15 },
+  { day: "3", line1: 15, line2: 25 },
+  { day: "4", line1: 25, line2: 10 },
+  { day: "5", line1: 30, line2: 15 },
+  { day: "6", line1: 10, line2: 20 },
+  { day: "7", line1: 20, line2: 15 },
+  { day: "8", line1: 15, line2: 25 },
+  { day: "9", line1: 25, line2: 10 },
+  { day: "10", line1: 30, line2: 15 },
+  { day: "11", line1: 25, line2: 10 },
+  { day: "12", line1: 30, line2: 15 },
+];
+
 
 function Homepage() {
   
@@ -54,21 +70,7 @@ function Homepage() {
     { month: "Dec", line1: 30, line2: 15 },
   ];
 
-  const lineChartData2: DataPoint[] = [
-    { day: "1", line1: 10, line2: 20 },
-    { day: "2", line1: 20, line2: 15 },
-    { day: "3", line1: 15, line2: 25 },
-    { day: "4", line1: 25, line2: 10 },
-    { day: "5", line1: 30, line2: 15 },
-    { day: "6", line1: 10, line2: 20 },
-    { day: "7", line1: 20, line2: 15 },
-    { day: "8", line1: 15, line2: 25 },
-    { day: "9", line1: 25, line2: 10 },
-    { day: "10", line1: 30, line2: 15 },
-    { day: "11", line1: 25, line2: 10 },
-    { day: "12", line1: 30, line2: 15 },
-  ];
-
+  
   return (
     <div>
       <DonutChart id="testCompoentn" zoom={true} width={600} height={700} withTooltip={false} withLegend={false}/>

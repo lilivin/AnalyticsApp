@@ -4,6 +4,7 @@ import Navigation from "./components/navigation";
 import Homepage from "./pages/Homepage";
 import Screen1 from "./pages/Screen1";
 import Layout from "./components/layout";
+import Screen2 from "./pages/Screen2";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,10 @@ function App() {
         {
           path: "/screen-1",
           element: <Screen1 />,
+        },
+        {
+          path: "/screen-2",
+          element: <Screen2 />,
         },
       ],
     },

@@ -28,6 +28,14 @@ function Navigation() {
             Screen 1
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? styles.active : "")}
+            to="/screen-2"
+          >
+            Screen 2
+          </NavLink>
+        </li>
       </ul>
       <ul className={styles.contact}>
         <li><img src={PhoneIcon} alt="Phone Icon" /><span>+48 555 555 555</span></li>
