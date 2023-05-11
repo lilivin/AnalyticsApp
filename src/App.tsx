@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Screen1 from "./pages/Screen1";
 import Layout from "./components/layout";
 import Screen2 from "./pages/Screen2";
+import Screen3 from "./pages/Screen3";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
         {
           path: "/screen-2",
           element: <Screen2 />,
+        },
+        {
+          path: "/screen-3",
+          element: <Screen3 />,
         },
       ],
     },

@@ -17,9 +17,10 @@ function BarChart(props: {
   xValue: string;
   keys: string[];
   grouped?: boolean;
+  withLegend?: boolean;
 }) {
-  const { id, data, xValue, keys, grouped } = props;
-  const margin = { top: 50, right: 20, bottom: 60, left: 20 };
+  const { id, data, xValue, keys, grouped, withLegend } = props;
+  const margin = { top: 50, right: 20, bottom: withLegend ? 60 : 0, left: 20 };
   const height = 400 - margin.top - margin.bottom;
 
   const { width: parentWidth } = useWindowDimensions(id);
@@ -114,7 +115,7 @@ function BarChart(props: {
       .join("rect")
       .attr("x", (d) =>
         // @ts-ignore
-        grouped ? (x1Scale(d.name as string) as number) : xScale(d.data[xValue])!
+        grouped? (x1Scale(d.name as string) as number): xScale(d.data[xValue])!
       )
       .attr("y", height)
       .attr("width", grouped ? x1Scale.bandwidth() : xScale.bandwidth())
@@ -167,27 +168,6 @@ function BarChart(props: {
         : Math.floor(parentWidth / legendWidth);
     const legendContainerWidth = itemsInRow * legendWidth;
 
-    // Append the legend container to the SVG
-    const legend = svg
-      .append("g")
-      .attr("class", "legend")
-      .attr("transform", `translate(0, ${height + 40})`); // adjust the value to control the vertical spacing between the chart and the legend
-
-    // Append legend items
-    const legendItems = legend
-      .selectAll(".legend-item")
-      .data(keys)
-      .enter()
-      .append("g")
-      .attr("class", "legend-item")
-      .attr(
-        "transform",
-        (d, i) =>
-          `translate(${updateLegendItem(i).xTranslate}, ${
-            updateLegendItem(i).yTranslate
-          })`
-      );
-
     function updateLegendItem(i: number) {
       const yTranslate = 0;
       const xTranslate = i * legendWidth;
@@ -198,26 +178,49 @@ function BarChart(props: {
       }
     }
 
-    // Append legend color rectangles
-    legendItems
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("width", 15) // width of the legend color rectangle
-      .attr("height", 15) // height of the legend color rectangle
-      .attr("rx", 50)
-      .attr("fill", (d, i) => colors[i]) // assuming colors is an array of colors for each legend item
-      .attr("stroke", "#000")
-      .attr("stroke-width", "#000");
+    if (withLegend) {
+      // Append the legend container to the SVG
+      const legend = svg
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", `translate(0, ${height + 40})`); // adjust the value to control the vertical spacing between the chart and the legend
 
-    // Append legend labels
-    legendItems
-      .append("text")
-      .attr("x", 20) // adjust the value to control the horizontal spacing between the legend color rectangle and the legend label
-      .attr("y", 12) // adjust the value to vertically center the legend label
-      .text((d) => d) // assuming the legend labels are the keys in the data
-      .attr("font-weight", 500)
-      .attr("font-size", 14);
+      // Append legend items
+      const legendItems = legend
+        .selectAll(".legend-item")
+        .data(keys)
+        .enter()
+        .append("g")
+        .attr("class", "legend-item")
+        .attr(
+          "transform",
+          (d, i) =>
+            `translate(${updateLegendItem(i).xTranslate}, ${
+              updateLegendItem(i).yTranslate
+            })`
+        );
+
+      // Append legend color rectangles
+      legendItems
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 15) // width of the legend color rectangle
+        .attr("height", 15) // height of the legend color rectangle
+        .attr("rx", 50)
+        .attr("fill", (d, i) => colors[i]) // assuming colors is an array of colors for each legend item
+        .attr("stroke", "#000")
+        .attr("stroke-width", "#000");
+
+      // Append legend labels
+      legendItems
+        .append("text")
+        .attr("x", 20) // adjust the value to control the horizontal spacing between the legend color rectangle and the legend label
+        .attr("y", 12) // adjust the value to vertically center the legend label
+        .text((d) => d) // assuming the legend labels are the keys in the data
+        .attr("font-weight", 500)
+        .attr("font-size", 14);
+    }
   }, [parentWidth]);
 
   return <div id={id}></div>;

@@ -1,0 +1,28 @@
+.hamburger{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  width: 30px;
+  padding: 10px 0;
+  left: 0px;
+  background: #1c2333;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  transition: 300ms;
+  img{
+    transition: 300ms;
+  }
+  &.open{
+  left: 248px;
+    img{
+      transform: rotate(180deg) translateX(3px);
+    }
+  }
+}
+
+@media(min-width: 1300px){
+  .hamburger {
+    display: none;
+  }
+}

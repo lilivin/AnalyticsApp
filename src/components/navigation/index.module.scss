@@ -1,10 +1,19 @@
 .navigation {
-  background: #1c2333;
-  color: #fff;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
+  height: 100vh;
+  .asideNav{
+    background: #1c2333;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(-250px);
+    transition: 300ms;
+    &.open{
+      transform: translateX(0);
+    }
+  }
   .logo {
     display: flex;
     align-items: center;
@@ -58,6 +67,14 @@
       img{
         width: 30px;
       }
+    }
+  }
+}
+
+@media(min-width: 1300px){
+  .navigation {
+    .asideNav{
+      transform: translateX(0);
     }
   }
 }

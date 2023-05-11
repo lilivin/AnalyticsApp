@@ -10,9 +10,20 @@
 }
 
 .content {
-  margin-left: 250px;
-  width: calc(100vw - 250px);
+  margin-left: 0px;
   min-height: 100vh;
   background: #F1F4F9;
   padding: 50px 50px 20px 50px;
+}
+
+.container{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media(min-width: 1300px){
+  .content{
+    width: calc(100vw - 250px);
+    margin-left: 250px;
+  }
 }

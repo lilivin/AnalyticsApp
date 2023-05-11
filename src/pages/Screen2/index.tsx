@@ -1,10 +1,15 @@
 import BarChart from "../../components/barChart";
 import DonutChart from "../../components/donutChart";
+import FileManager from "../../components/fileManager";
 import FlexRow from "../../components/flexRow";
 import GraphContainer from "../../components/graphContainer";
 import LineChart from "../../components/lineChart";
 import List from "../../components/list";
-import { DataPoint, barChartData1, lineChartData2 } from "../Homepage";
+import ListItem from "../../components/list/components/listItem";
+import FileItem from "../../components/list/components/listItem/components/fileItem";
+import StorageItem from "../../components/list/components/listItem/components/storageItem";
+import ProgressBar from "../../components/progressBar";
+import { DataPoint, barChartData1, barChartData2, lineChartData2 } from "../Homepage";
 import styles from "./index.module.scss";
 
 const lineChartData1: DataPoint[] = [
@@ -25,26 +30,7 @@ const lineChartData1: DataPoint[] = [
 function Screen2() {
   return (
     <div className={styles.container}>
-      <FlexRow>
-        <GraphContainer title="User Devices" width={60}>
-          <LineChart
-            id="smoothLineChart"
-            data={lineChartData2}
-            xValue="day"
-            smooth={true}
-            width={850}
-            height={400}
-          />
-        </GraphContainer>
-        <GraphContainer title="User Devices" width={40}>
-          <BarChart
-            id="barChart"
-            data={barChartData1}
-            xValue="year"
-            keys={["apples", "oranges", "grapes"]}
-          />
-        </GraphContainer>
-      </FlexRow>
+      <FileManager />
       <FlexRow>
         <GraphContainer title="User Devices" width={40}>
           <DonutChart
@@ -57,7 +43,142 @@ function Screen2() {
           />
         </GraphContainer>
         <GraphContainer title="User Devices" width={60}>
-          <List />
+          <List>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+            <ListItem>
+              <FileItem
+                fileName="Test"
+                fileSize="55kB"
+                uploadDate="25.09.2022"
+              />
+            </ListItem>
+          </List>
+        </GraphContainer>
+      </FlexRow>
+      <FlexRow>
+        <GraphContainer title="Used Storage" width={60}>
+          <BarChart
+            id="groupedBarChart"
+            data={barChartData2}
+            xValue="year"
+            keys={["apples"]}
+          />
+        </GraphContainer>
+        <GraphContainer title="Test" width={40}>
+          <List>
+            <ListItem>
+              <StorageItem
+                progress={70}
+                name="Video Storage"
+                size="128GB"
+                image="video-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={50}
+                name="Docs Storage"
+                size="50GB"
+                image="folder-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={60}
+                name="Music Storage"
+                size="72GB"
+                image="music-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={90}
+                name="Photo Storage"
+                size="80GB"
+                image="photo-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={70}
+                name="Video Storage"
+                size="128GB"
+                image="video-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={50}
+                name="Docs Storage"
+                size="50GB"
+                image="folder-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={60}
+                name="Music Storage"
+                size="72GB"
+                image="music-icon.svg"
+              />
+            </ListItem>
+            <ListItem>
+              <StorageItem
+                progress={90}
+                name="Photo Storage"
+                size="80GB"
+                image="photo-icon.svg"
+              />
+            </ListItem>
+          </List>
         </GraphContainer>
       </FlexRow>
     </div>

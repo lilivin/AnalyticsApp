@@ -4,7 +4,11 @@ import FlexRow from "../../components/flexRow";
 import GraphContainer from "../../components/graphContainer";
 import ImageWithText from "../../components/imageWithText";
 import LineChart from "../../components/lineChart";
-import OverviewStats from "../../components/overviewStats";
+import List from "../../components/list";
+import ListItem from "../../components/list/components/listItem";
+import FileItem from "../../components/list/components/listItem/components/fileItem";
+import StorageItem from "../../components/list/components/listItem/components/storageItem";
+import ProgressBar from "../../components/progressBar";
 import Table from "../../components/table";
 import TableBody from "../../components/table/components/tableBody";
 import TableBodyCell from "../../components/table/components/tableBodyCell";
@@ -12,7 +16,13 @@ import TableHead from "../../components/table/components/tableHead";
 import TableHeadCell from "../../components/table/components/tableHeadCell";
 import TableRow from "../../components/table/components/tableRow";
 import Tag from "../../components/tag";
-import { DataPoint, barChartData2, dataGrouped } from "../Homepage";
+import {
+  DataPoint,
+  barChartData1,
+  barChartData2,
+  dataGrouped,
+  lineChartData2,
+} from "../Homepage";
 import styles from "./index.module.scss";
 
 const lineChartData1: DataPoint[] = [
@@ -30,28 +40,26 @@ const lineChartData1: DataPoint[] = [
   { month: "Dec", line1: 30, line2: 15 },
 ];
 
-function Screen1() {
+function Screen3() {
   return (
     <div className={styles.container}>
-      <OverviewStats />
       <FlexRow>
         <GraphContainer title="User Devices" width={60}>
           <LineChart
-            id="lineChart"
-            data={lineChartData1}
-            xValue="month"
-            smooth={false}
+            id="smoothLineChart"
+            data={lineChartData2}
+            xValue="day"
+            smooth={true}
             width={850}
-            height={360}
+            height={400}
           />
         </GraphContainer>
         <GraphContainer title="User Devices" width={40}>
-          <DonutChart
-            id="testCompoentn2312"
-            zoom={false}
-            width={450}
-            height={350}
-            withTooltip={true}
+          <BarChart
+            id="barChart"
+            data={barChartData1}
+            xValue="year"
+            keys={["apples", "oranges", "grapes"]}
             withLegend={true}
           />
         </GraphContainer>
@@ -133,7 +141,9 @@ function Screen1() {
             </TableRow>
             <TableRow>
               <TableBodyCell>
-                <ImageWithText roundedImage={true} image="user-image-3.jpg">John Smith</ImageWithText>
+                <ImageWithText roundedImage={true} image="user-image-3.jpg">
+                  John Smith
+                </ImageWithText>
               </TableBodyCell>
               <TableBodyCell>jsmith@gmail.com</TableBodyCell>
               <TableBodyCell>MyBank.com Services</TableBodyCell>
@@ -146,9 +156,19 @@ function Screen1() {
         </Table>
       </GraphContainer>
       <FlexRow>
-        <GraphContainer title="User Devices" width={50}>
+        <GraphContainer title="User Devices" width={40}>
+          <DonutChart
+            id="testCompoentn2"
+            zoom={true}
+            width={600}
+            height={360}
+            withTooltip={false}
+            withLegend={true}
+          />
+        </GraphContainer>
+        <GraphContainer title="Used Storage" width={60}>
           <BarChart
-            id="groupedBarChart2"
+            id="groupedBarChart23"
             data={dataGrouped}
             xValue="group"
             keys={["value1", "value2", "value3", "value4"]}
@@ -156,75 +176,9 @@ function Screen1() {
             withLegend={true}
           />
         </GraphContainer>
-        <GraphContainer title="User Devices" width={50}>
-          <Table maxHeight={350}>
-            <TableHead>
-              <TableHeadCell>Source</TableHeadCell>
-              <TableHeadCell>Visitors</TableHeadCell>
-              <TableHeadCell>Revenues</TableHeadCell>
-              <TableHeadCell>Conversion</TableHeadCell>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </GraphContainer>
       </FlexRow>
     </div>
   );
 }
 
-export default Screen1;
+export default Screen3;
