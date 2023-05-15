@@ -71,6 +71,9 @@ function DonutChart(props: {
         })`
       );
 
+    const x = 0.5;
+    const y = 0.8
+
     const arc = d3
       .arc()
       .innerRadius(radius * 0.5)
@@ -135,10 +138,10 @@ function DonutChart(props: {
           svg.select(".donut-text").text(`Categories`);
           d3.select(this)
             .transition()
-            .duration(200)
+            .duration(300)
             .attr("d", arc as unknown as string);
         } else if (withTooltip) {
-          tooltip.transition().duration(500).style("opacity", 0);
+          tooltip.transition().duration(600).style("opacity", 0);
         }
       })
       .transition()
@@ -154,7 +157,7 @@ function DonutChart(props: {
         .attr("class", "donut-text-value")
         .attr("text-anchor", "middle")
         .style("font-weight", "bold")
-        .style("font-size", "34px")
+        .style("font-size", "36px")
         .attr("dy", "0em")
         .text(itemsValue);
 
@@ -162,7 +165,7 @@ function DonutChart(props: {
         .append("text")
         .attr("class", "donut-text")
         .attr("text-anchor", "middle")
-        .style("font-size", "18px")
+        .style("font-size", "20px")
         .attr("dy", "1.8em")
         .text("Categories");
     }

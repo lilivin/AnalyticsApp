@@ -7,8 +7,10 @@ function FileItem(props: { fileName: string, fileSize: string, uploadDate: strin
   return (
     <div className={styles.fileItem}>
       <ImageWithText image="file-icon.svg">{fileName}</ImageWithText>
-      <span>{fileSize}</span>
-      <span>{uploadDate}</span>
+      <div className={styles.size}>
+        <span>{fileSize}</span>
+      </div>
+      <div className={styles.date}>{uploadDate}</div>
       <Button>Download</Button>
     </div>
   );

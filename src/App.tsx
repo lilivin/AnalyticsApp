@@ -12,20 +12,20 @@ function App() {
     {
       element: <Layout />,
       children: [
+        // {
+        //   path: "/",
+        //   element: <Homepage />,
+        // },
         {
           path: "/",
-          element: <Homepage />,
-        },
-        {
-          path: "/screen-1",
           element: <Screen1 />,
         },
         {
-          path: "/screen-2",
+          path: "/screen-1",
           element: <Screen2 />,
         },
         {
-          path: "/screen-3",
+          path: "/screen-2",
           element: <Screen3 />,
         },
       ],

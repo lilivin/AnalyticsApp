@@ -17,18 +17,18 @@ function Navigation(props: { setIsOpen: (arg: boolean) => void, isOpen: boolean 
           <h3 className={styles.header}>VisData</h3>
         </div>
         <ul className={`${styles.list}`}>
-          <li>
+          {/* <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles.active : "")}
               to="/"
             >
               Homepage
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles.active : "")}
-              to="/screen-1"
+              to="/"
             >
               Screen 1
             </NavLink>
@@ -36,7 +36,7 @@ function Navigation(props: { setIsOpen: (arg: boolean) => void, isOpen: boolean 
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles.active : "")}
-              to="/screen-2"
+              to="/screen-1"
             >
               Screen 2
             </NavLink>
@@ -44,7 +44,7 @@ function Navigation(props: { setIsOpen: (arg: boolean) => void, isOpen: boolean 
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles.active : "")}
-              to="/screen-3"
+              to="/screen-2"
             >
               Screen 3
             </NavLink>

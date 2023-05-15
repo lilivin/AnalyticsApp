@@ -54,7 +54,7 @@ function Screen2() {
             <ListItem>
               <FileItem
                 fileName="Test"
-                fileSize="55kB"
+                fileSize="515kB"
                 uploadDate="25.09.2022"
               />
             </ListItem>
@@ -88,8 +88,8 @@ function Screen2() {
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
+                fileName="Test Undefined2"
+                fileSize="511kB"
                 uploadDate="25.09.2022"
               />
             </ListItem>

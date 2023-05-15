@@ -1,11 +1,13 @@
 .container{
     display: flex;
-    gap: 30px;
+    gap: 0px;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-@media(max-width: 1000px){
+@media(min-width: 1000px){
     .container{
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        gap: 30px;
     }
 }
