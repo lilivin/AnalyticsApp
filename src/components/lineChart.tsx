@@ -1,12 +1,12 @@
 import * as d3 from "d3";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./styles.css";
-import { DataPoint } from "../pages/Homepage";
 import useWindowDimensions from "../helpers/useWindowDimenstions";
+import { LineChartData } from "../helpers/getLineChartData";
 
 function LineChart(props: {
   id: string;
-  data: DataPoint[];
+  data: LineChartData[];
   xValue: string;
   smooth: boolean;
   width: number;
@@ -97,12 +97,12 @@ function LineChart(props: {
         "d",
         smooth
           ? d3
-              .line<DataPoint>()
+              .line<LineChartData>()
               .x((d) => xScale(d[xValue] as string)! + xScale.bandwidth() / 2)
               .y((d) => yScale(d.line1)!)
               .curve(d3.curveCatmullRom)
           : d3
-              .line<DataPoint>()
+              .line<LineChartData>()
               .x((d) => xScale(d[xValue] as string)! + xScale.bandwidth() / 2)
               .y((d) => yScale(d.line1)!)
       );
@@ -117,12 +117,12 @@ function LineChart(props: {
         "d",
         smooth
           ? d3
-              .line<DataPoint>()
+              .line<LineChartData>()
               .x((d) => xScale(d[xValue] as string)! + xScale.bandwidth() / 2)
               .y((d) => yScale(d.line2)!)
               .curve(d3.curveCatmullRom)
           : d3
-              .line<DataPoint>()
+              .line<LineChartData>()
               .x((d) => xScale(d[xValue] as string)! + xScale.bandwidth() / 2)
               .y((d) => yScale(d.line2)!)
       );

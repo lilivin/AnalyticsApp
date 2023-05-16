@@ -6,7 +6,10 @@ import { NavLink } from "react-router-dom";
 import Hamburger from "./components/hamburger";
 import { Dispatch, SetStateAction } from "react";
 
-function Navigation(props: { setIsOpen: (arg: boolean) => void, isOpen: boolean }) {
+function Navigation(props: {
+  setIsOpen: (arg: boolean) => void;
+  isOpen: boolean;
+}) {
   const { setIsOpen, isOpen } = props;
   return (
     <div className={styles.navigation}>
@@ -17,14 +20,6 @@ function Navigation(props: { setIsOpen: (arg: boolean) => void, isOpen: boolean 
           <h3 className={styles.header}>VisData</h3>
         </div>
         <ul className={`${styles.list}`}>
-          {/* <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? styles.active : "")}
-              to="/"
-            >
-              Homepage
-            </NavLink>
-          </li> */}
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles.active : "")}

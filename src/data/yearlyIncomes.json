@@ -1,0 +1,16 @@
+{
+  "data": [
+    { "month": "Jan", "line1": 100, "line2": 200 },
+    { "month": "Feb", "line1": 200, "line2": 150 },
+    { "month": "Mar", "line1": 150, "line2": 250 },
+    { "month": "Apr", "line1": 250, "line2": 100 },
+    { "month": "May", "line1": 300, "line2": 150 },
+    { "month": "Jun", "line1": 100, "line2": 200 },
+    { "month": "Jul", "line1": 200, "line2": 150 },
+    { "month": "Aug", "line1": 150, "line2": 250 },
+    { "month": "Sep", "line1": 250, "line2": 100 },
+    { "month": "Oct", "line1": 300, "line2": 150 },
+    { "month": "Nov", "line1": 250, "line2": 100 },
+    { "month": "Dec", "line1": 300, "line2": 150 }
+  ]
+}

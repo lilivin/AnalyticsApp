@@ -2,14 +2,11 @@ import * as d3 from "d3";
 import { useEffect } from "react";
 import "./styles.css";
 import useWindowDimensions from "../helpers/useWindowDimenstions";
-
-type DonutChartData = {
-  label: string;
-  value: number;
-};
+import { DonutChartData } from "../helpers/getDonutChartData";
 
 function DonutChart(props: {
   id: string;
+  data?: DonutChartData[];
   zoom: boolean;
   width: number;
   height: number;
@@ -17,25 +14,20 @@ function DonutChart(props: {
   withLegend: boolean;
   percent?: number;
 }) {
-  const { id, zoom, width, height, withTooltip, withLegend, percent } = props;
+  const { id, data, zoom, width, height, withTooltip, withLegend, percent } = props;
 
-  let data: DonutChartData[] = [
-    { label: "Category 1", value: 40 },
-    { label: "Category 2", value: 20 },
-    { label: "Category 3", value: 20 },
-    { label: "Category 4", value: 20 },
-  ];
+  let presentedData = data ? data : [];
 
   if (percent) {
-    data = [
+    presentedData = [
       { label: "Value1", value: percent },
       { label: "Value2", value: 100 - percent },
     ];
   }
 
-  const keys = data.map((item) => item.label);
+  const keys = presentedData.map((item) => item.label);
 
-  const itemsValue = data
+  const itemsValue = presentedData
     .map((item) => item.value)
     .reduce((prev, next) => prev + next);
 
@@ -47,7 +39,7 @@ function DonutChart(props: {
   const radius = Math.min(parentWidth, parentHeight) / 2;
   const color = d3
     .scaleOrdinal()
-    .domain(data.map((d: DonutChartData) => d.label))
+    .domain(presentedData.map((d: DonutChartData) => d.label))
     .range(["#3B50DF", "#80CAEF", "#0FADD0", "#6577F3"]);
 
   useEffect(() => {
@@ -92,7 +84,7 @@ function DonutChart(props: {
       };
     };
 
-    const arcs = svg.selectAll("path").data(pie(data)).enter();
+    const arcs = svg.selectAll("path").data(pie(presentedData)).enter();
 
     arcs
       .append("path")

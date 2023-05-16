@@ -4,11 +4,6 @@ import FlexRow from "../../components/flexRow";
 import GraphContainer from "../../components/graphContainer";
 import ImageWithText from "../../components/imageWithText";
 import LineChart from "../../components/lineChart";
-import List from "../../components/list";
-import ListItem from "../../components/list/components/listItem";
-import FileItem from "../../components/list/components/listItem/components/fileItem";
-import StorageItem from "../../components/list/components/listItem/components/storageItem";
-import ProgressBar from "../../components/progressBar";
 import Table from "../../components/table";
 import TableBody from "../../components/table/components/tableBody";
 import TableBodyCell from "../../components/table/components/tableBodyCell";
@@ -16,50 +11,31 @@ import TableHead from "../../components/table/components/tableHead";
 import TableHeadCell from "../../components/table/components/tableHeadCell";
 import TableRow from "../../components/table/components/tableRow";
 import Tag from "../../components/tag";
-import {
-  DataPoint,
-  barChartData1,
-  barChartData2,
-  dataGrouped,
-  lineChartData2,
-} from "../Homepage";
+import { getUsedStorageData, getVisitorsGenderData } from "../../helpers/getBarChartData";
+import { getVisitorsAnalyticsData } from "../../helpers/getDonutChartData";
+import { getVisitorsPerYearData } from "../../helpers/getLineChartData";
 import styles from "./index.module.scss";
-
-const lineChartData1: DataPoint[] = [
-  { month: "Jan", line1: 10, line2: 20 },
-  { month: "Feb", line1: 20, line2: 15 },
-  { month: "Mar", line1: 15, line2: 25 },
-  { month: "Apr", line1: 25, line2: 10 },
-  { month: "May", line1: 30, line2: 15 },
-  { month: "Jun", line1: 10, line2: 20 },
-  { month: "Jul", line1: 20, line2: 15 },
-  { month: "Aug", line1: 15, line2: 25 },
-  { month: "Sep", line1: 25, line2: 10 },
-  { month: "Oct", line1: 30, line2: 15 },
-  { month: "Nov", line1: 25, line2: 10 },
-  { month: "Dec", line1: 30, line2: 15 },
-];
 
 function Screen3() {
   return (
     <div className={styles.container}>
       <FlexRow>
-        <GraphContainer title="User Devices" width={60}>
+        <GraphContainer title="Visitors per year" width={60}>
           <LineChart
             id="smoothLineChart"
-            data={lineChartData2}
+            data={getVisitorsPerYearData()}
             xValue="day"
             smooth={true}
             width={850}
             height={400}
           />
         </GraphContainer>
-        <GraphContainer title="User Devices" width={40}>
+        <GraphContainer title="Visitors Gender" width={40}>
           <BarChart
             id="barChart"
-            data={barChartData1}
+            data={getVisitorsGenderData()}
             xValue="year"
-            keys={["apples", "oranges", "grapes"]}
+            keys={["Male", "Female", "Unknown"]}
             withLegend={true}
           />
         </GraphContainer>
@@ -159,6 +135,7 @@ function Screen3() {
         <GraphContainer title="User Devices" width={40}>
           <DonutChart
             id="testCompoentn2"
+            data={getVisitorsAnalyticsData()}
             zoom={true}
             width={600}
             height={360}
@@ -169,9 +146,9 @@ function Screen3() {
         <GraphContainer title="Used Storage" width={60}>
           <BarChart
             id="groupedBarChart23"
-            data={dataGrouped}
+            data={getUsedStorageData()}
             xValue="group"
-            keys={["value1", "value2", "value3", "value4"]}
+            keys={["Mobile", "Tablet", "Phone", "Unknown"]}
             grouped={true}
             withLegend={true}
           />

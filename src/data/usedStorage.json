@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "group": "2021",
+      "Mobile": 100,
+      "Tablet": 170,
+      "Phone": 190,
+      "Unknown": 160
+    },
+    {
+      "group": "2022",
+      "Mobile": 150,
+      "Tablet": 180,
+      "Phone": 220,
+      "Unknown": 240
+    },
+    {
+      "group": "2023",
+      "Mobile": 200,
+      "Tablet": 100,
+      "Phone": 200,
+      "Unknown": 300
+    }
+  ]
+}

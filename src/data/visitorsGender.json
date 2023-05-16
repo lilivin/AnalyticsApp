@@ -1,0 +1,11 @@
+{
+  "data": [
+    { "year": 2014, "Male": 12, "Female": 18, "Unknown": 10 },
+    { "year": 2015, "Male": 15, "Female": 20, "Unknown": 12 },
+    { "year": 2016, "Male": 3, "Female": 5, "Unknown": 8 },
+    { "year": 2017, "Male": 11, "Female": 12, "Unknown": 4 },
+    { "year": 2018, "Male": 10, "Female": 15, "Unknown": 8 },
+    { "year": 2019, "Male": 12, "Female": 18, "Unknown": 10 },
+    { "year": 2020, "Male": 15, "Female": 20, "Unknown": 12 }
+  ]
+}

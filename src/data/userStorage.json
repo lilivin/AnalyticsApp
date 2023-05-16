@@ -1,0 +1,11 @@
+{
+  "data": [
+    { "year": 2014, "storage": 120 },
+    { "year": 2015, "storage": 150 },
+    { "year": 2016, "storage": 30 },
+    { "year": 2017, "storage": 110 },
+    { "year": 2018, "storage": 100 },
+    { "year": 2019, "storage": 120 },
+    { "year": 2020, "storage": 150 }
+  ]
+}

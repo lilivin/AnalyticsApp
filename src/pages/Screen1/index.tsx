@@ -12,42 +12,30 @@ import TableHead from "../../components/table/components/tableHead";
 import TableHeadCell from "../../components/table/components/tableHeadCell";
 import TableRow from "../../components/table/components/tableRow";
 import Tag from "../../components/tag";
-import { DataPoint, barChartData2, dataGrouped } from "../Homepage";
+import { getUserDevicesData } from "../../helpers/getBarChartData";
+import { getVisitorsAnalyticsData } from "../../helpers/getDonutChartData";
+import { getYearlyIncomesData } from "../../helpers/getLineChartData";
 import styles from "./index.module.scss";
-
-const lineChartData1: DataPoint[] = [
-  { month: "Jan", line1: 10, line2: 20 },
-  { month: "Feb", line1: 20, line2: 15 },
-  { month: "Mar", line1: 15, line2: 25 },
-  { month: "Apr", line1: 25, line2: 10 },
-  { month: "May", line1: 30, line2: 15 },
-  { month: "Jun", line1: 10, line2: 20 },
-  { month: "Jul", line1: 20, line2: 15 },
-  { month: "Aug", line1: 15, line2: 25 },
-  { month: "Sep", line1: 25, line2: 10 },
-  { month: "Oct", line1: 30, line2: 15 },
-  { month: "Nov", line1: 25, line2: 10 },
-  { month: "Dec", line1: 30, line2: 15 },
-];
 
 function Screen1() {
   return (
     <div className={styles.container}>
       <OverviewStats />
       <FlexRow>
-        <GraphContainer title="User Devices" width={60}>
+        <GraphContainer title="Yearly incomes" width={60}>
           <LineChart
             id="lineChart"
-            data={lineChartData1}
+            data={getYearlyIncomesData()}
             xValue="month"
             smooth={false}
             width={850}
             height={360}
           />
         </GraphContainer>
-        <GraphContainer title="User Devices" width={40}>
+        <GraphContainer title="Visitors Analytics" width={40}>
           <DonutChart
             id="testCompoentn2312"
+            data={getVisitorsAnalyticsData()}
             zoom={false}
             width={450}
             height={350}
@@ -56,7 +44,7 @@ function Screen1() {
           />
         </GraphContainer>
       </FlexRow>
-      <GraphContainer title="User Devices" width={100}>
+      <GraphContainer title="Leads Report" width={100}>
         <Table maxHeight={300}>
           <TableHead>
             <TableHeadCell>Name</TableHeadCell>
@@ -108,7 +96,7 @@ function Screen1() {
             <TableRow>
               <TableBodyCell>
                 <ImageWithText roundedImage={true} image="user-image-1.jpg">
-                  ACheyenne Levis
+                  Cheyenne Levis
                 </ImageWithText>
               </TableBodyCell>
               <TableBodyCell>ebrown@outlook.com</TableBodyCell>
@@ -149,9 +137,9 @@ function Screen1() {
         <GraphContainer title="User Devices" width={50}>
           <BarChart
             id="groupedBarChart2"
-            data={dataGrouped}
+            data={getUserDevicesData()}
             xValue="group"
-            keys={["value1", "value2", "value3", "value4"]}
+            keys={["Mobile", "Tablet", "Phone", "Unknown"]}
             grouped={true}
             withLegend={true}
           />
@@ -166,58 +154,58 @@ function Screen1() {
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
+                <TableBodyCell>Youtube</TableBodyCell>
+                <TableBodyCell>5.5K</TableBodyCell>
+                <TableBodyCell>$7.290</TableBodyCell>
+                <TableBodyCell>3.5%</TableBodyCell>
               </TableRow>
               <TableRow>
                 <TableBodyCell>Google</TableBodyCell>
                 <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
+                <TableBodyCell>$4.770</TableBodyCell>
                 <TableBodyCell>2.5%</TableBodyCell>
               </TableRow>
               <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
+                <TableBodyCell>Twitter</TableBodyCell>
+                <TableBodyCell>3.4K</TableBodyCell>
+                <TableBodyCell>$3.120</TableBodyCell>
+                <TableBodyCell>7.5%</TableBodyCell>
+              </TableRow>
+              <TableRow>
+                <TableBodyCell>Instagram</TableBodyCell>
+                <TableBodyCell>4.6K</TableBodyCell>
+                <TableBodyCell>$7.110</TableBodyCell>
+                <TableBodyCell>1.5%</TableBodyCell>
+              </TableRow>
+              <TableRow>
+                <TableBodyCell>Facebook</TableBodyCell>
+                <TableBodyCell>8.7K</TableBodyCell>
+                <TableBodyCell>$12.290</TableBodyCell>
+                <TableBodyCell>7.5%</TableBodyCell>
+              </TableRow>
+              <TableRow>
+                <TableBodyCell>Tiktok</TableBodyCell>
+                <TableBodyCell>18.1K</TableBodyCell>
+                <TableBodyCell>$10.640</TableBodyCell>
+                <TableBodyCell>10.5%</TableBodyCell>
+              </TableRow>
+              <TableRow>
+                <TableBodyCell>Pinterest</TableBodyCell>
+                <TableBodyCell>4.5K</TableBodyCell>
+                <TableBodyCell>$1.390</TableBodyCell>
+                <TableBodyCell>1.3%</TableBodyCell>
+              </TableRow>
+              <TableRow>
+                <TableBodyCell>Snapchat</TableBodyCell>
+                <TableBodyCell>6.5K</TableBodyCell>
+                <TableBodyCell>$1.240</TableBodyCell>
                 <TableBodyCell>2.5%</TableBodyCell>
               </TableRow>
               <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
-              </TableRow>
-              <TableRow>
-                <TableBodyCell>Google</TableBodyCell>
-                <TableBodyCell>2.5K</TableBodyCell>
-                <TableBodyCell>$4.290</TableBodyCell>
-                <TableBodyCell>2.5%</TableBodyCell>
+                <TableBodyCell>Linkedin</TableBodyCell>
+                <TableBodyCell>7.6K</TableBodyCell>
+                <TableBodyCell>$1.640</TableBodyCell>
+                <TableBodyCell>7.1%</TableBodyCell>
               </TableRow>
             </TableBody>
           </Table>

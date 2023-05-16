@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "label": "Unknown",
+      "value": 1042
+    },
+    {
+      "label": "Tablet",
+      "value": 1236
+    },
+    {
+      "label": "Desktop",
+      "value": 4231
+    },
+    {
+      "label": "Mobile",
+      "value": 8125
+    }
+  ]
+}

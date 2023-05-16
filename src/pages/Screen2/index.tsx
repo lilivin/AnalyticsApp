@@ -3,29 +3,13 @@ import DonutChart from "../../components/donutChart";
 import FileManager from "../../components/fileManager";
 import FlexRow from "../../components/flexRow";
 import GraphContainer from "../../components/graphContainer";
-import LineChart from "../../components/lineChart";
 import List from "../../components/list";
 import ListItem from "../../components/list/components/listItem";
 import FileItem from "../../components/list/components/listItem/components/fileItem";
 import StorageItem from "../../components/list/components/listItem/components/storageItem";
-import ProgressBar from "../../components/progressBar";
-import { DataPoint, barChartData1, barChartData2, lineChartData2 } from "../Homepage";
+import { getUserStorageData } from "../../helpers/getBarChartData";
+import { getVisitorsAnalyticsData } from "../../helpers/getDonutChartData";
 import styles from "./index.module.scss";
-
-const lineChartData1: DataPoint[] = [
-  { month: "Jan", line1: 10, line2: 20 },
-  { month: "Feb", line1: 20, line2: 15 },
-  { month: "Mar", line1: 15, line2: 25 },
-  { month: "Apr", line1: 25, line2: 10 },
-  { month: "May", line1: 30, line2: 15 },
-  { month: "Jun", line1: 10, line2: 20 },
-  { month: "Jul", line1: 20, line2: 15 },
-  { month: "Aug", line1: 15, line2: 25 },
-  { month: "Sep", line1: 25, line2: 10 },
-  { month: "Oct", line1: 30, line2: 15 },
-  { month: "Nov", line1: 25, line2: 10 },
-  { month: "Dec", line1: 30, line2: 15 },
-];
 
 function Screen2() {
   return (
@@ -35,6 +19,7 @@ function Screen2() {
         <GraphContainer title="User Devices" width={40}>
           <DonutChart
             id="testCompoentn2"
+            data={getVisitorsAnalyticsData()}
             zoom={true}
             width={600}
             height={400}
@@ -42,62 +27,62 @@ function Screen2() {
             withLegend={true}
           />
         </GraphContainer>
-        <GraphContainer title="User Devices" width={60}>
+        <GraphContainer title="Files" width={60}>
           <List>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
+                fileName="Content-script.txt"
+                fileSize="455kB"
                 uploadDate="25.09.2022"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
+                fileName="E-commerce.apk"
                 fileSize="515kB"
-                uploadDate="25.09.2022"
+                uploadDate="15.09.2022"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
-                uploadDate="25.09.2022"
+                fileName="Random-text.doc"
+                fileSize="215kB"
+                uploadDate="19.07.2022"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
-                uploadDate="25.09.2022"
+                fileName="Graph-data.json"
+                fileSize="155kB"
+                uploadDate="12.12.2022"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
-                uploadDate="25.09.2022"
+                fileName="Script-bot.py"
+                fileSize="525kB"
+                uploadDate="12.11.2022"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
-                uploadDate="25.09.2022"
+                fileName="invoices.xlsx"
+                fileSize="715kB"
+                uploadDate="10.05.2022"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test Undefined2"
-                fileSize="511kB"
-                uploadDate="25.09.2022"
+                fileName="Website-content.json"
+                fileSize="851kB"
+                uploadDate="05.01.2023"
               />
             </ListItem>
             <ListItem>
               <FileItem
-                fileName="Test"
-                fileSize="55kB"
-                uploadDate="25.09.2022"
+                fileName="Note-01.txt"
+                fileSize="575kB"
+                uploadDate="26.01.2023"
               />
             </ListItem>
           </List>
@@ -107,12 +92,12 @@ function Screen2() {
         <GraphContainer title="Used Storage" width={60}>
           <BarChart
             id="groupedBarChart"
-            data={barChartData2}
+            data={getUserStorageData()}
             xValue="year"
-            keys={["apples"]}
+            keys={["storage"]}
           />
         </GraphContainer>
-        <GraphContainer title="Test" width={40}>
+        <GraphContainer title="Storage Types" width={40}>
           <List>
             <ListItem>
               <StorageItem
