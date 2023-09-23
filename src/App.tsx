@@ -1,7 +1,5 @@
 import styles from "./App.module.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navigation from "./components/navigation";
-import Homepage from "./pages/Homepage";
 import Screen1 from "./pages/Screen1";
 import Layout from "./components/layout";
 import Screen2 from "./pages/Screen2";
@@ -12,10 +10,6 @@ function App() {
     {
       element: <Layout />,
       children: [
-        // {
-        //   path: "/",
-        //   element: <Homepage />,
-        // },
         {
           path: "/",
           element: <Screen1 />,

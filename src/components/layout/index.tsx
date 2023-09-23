@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Navigation from "../navigation";
 import styles from "./index.module.scss";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { useOutsideNavigationClick } from "../../helpers/useOutsideNavigationClick";
 
 function Layout() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigationRef = useRef(null);
+  useOutsideNavigationClick(navigationRef, setIsOpen);
   return (
     <div className={styles.app}>
-      <div className={styles.navigation}>
+      <div ref={navigationRef} className={`${styles.navigation} ${isOpen ? styles.open : ""}`}>
         <Navigation setIsOpen={setIsOpen} isOpen={isOpen} />
       </div>
       <div className={styles.content}>

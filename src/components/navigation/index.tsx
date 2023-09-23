@@ -4,7 +4,6 @@ import MailIcon from "../../assets/mail-icon.svg";
 import PhoneIcon from "../../assets/phone-icon.svg";
 import { NavLink } from "react-router-dom";
 import Hamburger from "./components/hamburger";
-import { Dispatch, SetStateAction } from "react";
 
 function Navigation(props: {
   setIsOpen: (arg: boolean) => void;

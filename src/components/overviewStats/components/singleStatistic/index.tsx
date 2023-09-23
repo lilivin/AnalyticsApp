@@ -30,7 +30,6 @@ function SingleStatistic(props: {
         <DonutChart
           id={id}
           zoom={false}
-          width={100}
           height={100}
           withTooltip={false}
           withLegend={false}

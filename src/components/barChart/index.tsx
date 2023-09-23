@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { useEffect } from "react";
-import useWindowDimensions from "../helpers/useWindowDimenstions";
+import useWindowDimensions from "../../helpers/useWindowDimenstions";
 
 type BarChartData = {
   [key: string]: number | string;

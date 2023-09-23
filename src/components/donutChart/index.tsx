@@ -1,20 +1,19 @@
 import * as d3 from "d3";
 import { useEffect } from "react";
-import "./styles.css";
-import useWindowDimensions from "../helpers/useWindowDimenstions";
-import { DonutChartData } from "../helpers/getDonutChartData";
+import "./index.scss";
+import useWindowDimensions from "../../helpers/useWindowDimenstions";
+import { DonutChartData } from "../../helpers/getDonutChartData";
 
 function DonutChart(props: {
   id: string;
   data?: DonutChartData[];
   zoom: boolean;
-  width: number;
   height: number;
   withTooltip: boolean;
   withLegend: boolean;
   percent?: number;
 }) {
-  const { id, data, zoom, width, height, withTooltip, withLegend, percent } = props;
+  const { id, data, zoom, height, withTooltip, withLegend, percent } = props;
 
   let presentedData = data ? data : [];
 

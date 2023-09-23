@@ -21,7 +21,6 @@ function Screen2() {
             id="testCompoentn2"
             data={getVisitorsAnalyticsData()}
             zoom={true}
-            width={600}
             height={400}
             withTooltip={false}
             withLegend={true}

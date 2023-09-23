@@ -1,18 +1,17 @@
 import * as d3 from "d3";
 import { useEffect } from "react";
-import "./styles.css";
-import useWindowDimensions from "../helpers/useWindowDimenstions";
-import { LineChartData } from "../helpers/getLineChartData";
+import "./index.scss";
+import useWindowDimensions from "../../helpers/useWindowDimenstions";
+import { LineChartData } from "../../helpers/getLineChartData";
 
 function LineChart(props: {
   id: string;
   data: LineChartData[];
   xValue: string;
   smooth: boolean;
-  width: number;
   height: number;
 }) {
-  const { id, data, xValue, smooth, width, height } = props;
+  const { id, data, xValue, smooth, height } = props;
 
   const margin = { top: 20, right: 30, bottom: 10, left: 25 };
   const parentHeight = height - margin.top - margin.bottom;

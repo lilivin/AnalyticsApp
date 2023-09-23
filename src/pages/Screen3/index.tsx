@@ -26,7 +26,6 @@ function Screen3() {
             data={getVisitorsPerYearData()}
             xValue="day"
             smooth={true}
-            width={850}
             height={400}
           />
         </GraphContainer>
@@ -137,7 +136,6 @@ function Screen3() {
             id="testCompoentn2"
             data={getVisitorsAnalyticsData()}
             zoom={true}
-            width={600}
             height={360}
             withTooltip={false}
             withLegend={true}

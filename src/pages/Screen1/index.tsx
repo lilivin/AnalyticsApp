@@ -28,7 +28,6 @@ function Screen1() {
             data={getYearlyIncomesData()}
             xValue="month"
             smooth={false}
-            width={850}
             height={360}
           />
         </GraphContainer>
@@ -37,7 +36,6 @@ function Screen1() {
             id="testCompoentn2312"
             data={getVisitorsAnalyticsData()}
             zoom={false}
-            width={450}
             height={350}
             withTooltip={true}
             withLegend={true}
