@@ -1,46 +1,51 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Analytics App
 
-## Available Scripts
 
-In the project directory, you can run:
+The "Analytics App" is a project created to showcase my skills in working with the d3.js library, which I have utilized in various commercial projects. Using this library, I have created a substantial number of animated graphs that collectively form a web application. The application comprises three subpages and leverages technologies such as React Typescript, SCSS, React Router, and D3.js.
 
-### `npm start`
+## Run Locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone the project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+  git clone https://github.com/lilivin/AnalyticsApp
+```
 
-### `npm test`
+Go to the project directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  cd AnalyticsApp
+```
 
-### `npm run build`
+Install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Start the server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  npm start
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Demo
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Link to demo: https://analytics-app-three.vercel.app/screen-2
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Screen 1
+![Screen 1 Part 1](https://thumbnails-photos.amazon.com/v1/thumbnail/zt8WwW3rQ9iROnEeLF4omg?viewBox=1896%2C961&ownerId=A7DYBV1QQXX0U&groupShareToken=_itcfHqMQRamIoIUGPVDMw.irAeZz1alsr-4osk5bNpA-)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Screen 1 Part 2](https://thumbnails-photos.amazon.com/v1/thumbnail/z2NcKmnYS6G7OVIFC8cu-Q?viewBox=1900%2C958&ownerId=A7DYBV1QQXX0U&groupShareToken=9cfuRuaHQ7aRD9FvLRtaKA.ozJSHOuLcn714hdOPr7VhN)
 
-## Learn More
+### Screen 2
+![Screen 2 Part 1](https://thumbnails-photos.amazon.com/v1/thumbnail/wh20DUuDTAWrnqjIBU_EtA?viewBox=1901%2C957&ownerId=A7DYBV1QQXX0U&groupShareToken=T5xZRg-tQBOC3_jEbM7WBQ.xtPs7M3SwzWDJY03-UwQrF)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Screen 2 Part 2](https://thumbnails-photos.amazon.com/v1/thumbnail/S4mJjMg9Rgy4vCU1ez6yGQ?viewBox=1898%2C957&ownerId=A7DYBV1QQXX0U&groupShareToken=ikhQRph_TViZsrKrBWsdEw.s__irQi_CIxMeLnnhFxpWv)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Screen 3
+![Screen 3 Part 1](https://thumbnails-photos.amazon.com/v1/thumbnail/YVe0FnsrRFKSdAmUMHxeHA?viewBox=1901%2C961&ownerId=A7DYBV1QQXX0U&groupShareToken=onkMntg7SQOp2VOSAByxig.FXxQevPj20KoWc_-7c3z5Y)
+
+![Screen 3 Part 2](https://thumbnails-photos.amazon.com/v1/thumbnail/Zz_jjUJ5RnexI1yEq7nANw?viewBox=1902%2C957&ownerId=A7DYBV1QQXX0U&groupShareToken=5QiC9QaHRQuYh4ES6NnmPQ.OasDUqFN5TOXbNMsyaaZ0f)
